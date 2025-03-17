@@ -1,0 +1,157 @@
+﻿Comprehensive Report: Data Preprocessing, EDA, and Findings
+1. Introduction
+In this project, we explore a student performance dataset containing various factors that may influence exam scores. The dataset includes both numeric and categorical variables, as well as missing values and inconsistent placeholders (e.g., "Not Available", "N/A", "NULL"). Our primary goal is to:
+
+
+Clean and standardize the data (fix missing values, unify categories, handle outliers, etc.).
+Perform a comprehensive EDA (univariate, bivariate, and correlation analysis).
+Generate preliminary insights about relationships in the data.
+1.1 Dataset Overview
+The dataset contains columns such as:
+
+
+Hours_Studied, Attendance, Previous_Scores, Exam_Score (numeric measures)
+Parental_Involvement, Access_to_Resources, Teacher_Quality (ordinal categories: Low/Medium/High)
+Extracurricular_Activities, Internet_Access (Yes/No)
+Gender, School_Type, Peer_Influence, Distance_from_Home, etc.
+We also see various missing-value placeholders (e.g., "--", "Unknown", "N/A") and textual numeric entries (like "sixty-five"). This necessitates a robust data-cleaning strategy.
+
+
+2. Data Loading and Initial Inspection
+2.1 Data Loading
+We loaded the dataset from a CSV file using Pandas. We specified a list of placeholders (["--", "N/A", "NULL", "Not Available", "Unknown", ...]) so that they would be read as NaN. Then we printed:
+
+
+Head of the dataset (df.head()) to see the first rows.
+Info (df.info()) to observe data types and non-null counts.
+Describe (df.describe(include='all')) for an overview of numeric stats (mean, std) and categorical stats (top, freq).
+2.2 Observations
+
+
+The dataset had missing values in many columns (both numeric and categorical).
+Some numeric columns (e.g., Hours_Studied, Previous_Scores) contained textual values (like "sixty-five").
+Ordinal categories ("Low", "Medium", "High") appeared in inconsistent forms (like "low", "high").
+Certain columns (like Attendance) had partial data.
+2.3 Removing Duplicates
+We removed duplicate rows (df.drop_duplicates()) to ensure each row is unique, then reset the index.
+
+
+3. Data Cleaning and Preprocessing
+3.1 Converting Written-Out Numbers to Digits
+We noticed entries like "sixty-five". We wrote a helper function (words_to_numbers) that:
+
+
+Splits words like "twenty-three" into numeric form.
+Returns NaN if unrecognized.
+We applied this to columns we expected to be numeric (like Hours_Studied, Sleep_Hours, Previous_Scores, etc.). This ensures we have actual numeric data rather than textual strings.
+
+
+3.2 Forcing Numeric Columns
+After dealing with textual numbers, we used pd.to_numeric(errors='coerce') to turn any leftover strings into NaN. We identified columns such as:
+
+
+Numeric: Hours_Studied, Attendance, Sleep_Hours, Previous_Scores, Exam_Score, Tutoring_Sessions, Physical_Activity, Family_Income.
+Any unconvertible entries became NaN.
+
+
+3.3 Handling Missing Values
+Numeric Columns: We imputed missing values with the median of each column.
+Categorical Columns: We imputed missing values with the mode (most frequent category).
+This ensures no columns remain with NaN.
+
+
+3.4 Normalizing Inconsistent Strings
+Some columns had variations like "Male"/"male"/"MALE". We standardized them by converting everything to lowercase, trimming spaces, and mapping them to consistent forms:
+
+
+"low" → "Low", "medium" → "Medium", "high" → "High".
+"male" → "Male", "female" → "Female".
+"yes" → "Yes", "no" → "No".
+This step ensures uniform category names.
+
+
+3.5 Mapping Ordinal/Yes-No Columns to Numeric
+Depending on the modeling plan, we either:
+
+
+One-hot encoded certain categorical columns (like School_Type, Extracurricular_Activities).
+Mapped ordinal categories ("Low", "Medium", "High") to numeric codes (e.g., 0.33, 0.66, 0.99).
+Mapped yes/no columns to 1.0/0.0.
+This step is crucial if we intend to feed the data into certain machine-learning algorithms that require numeric input.
+
+
+3.6 Outlier Clipping & Scaling
+For columns like Hours_Studied (which might have extreme values):
+
+
+We clipped outliers at the 1st and 99th percentile.
+We optionally applied MinMaxScaler or standard scaling to keep them in a normalized range.
+Motivation: Models can be sensitive to outliers; scaling can also help certain algorithms converge faster.
+
+
+3.7 Final Check
+We ran:
+
+
+df.info() to ensure no columns had missing data left.
+df.describe() to see new summary stats after cleaning.
+Verified that each column is in a sensible numeric or categorical form.
+4. Exploratory Data Analysis (EDA)
+4.1 Univariate Analysis
+Histograms / KDE for numeric columns
+
+
+We plotted the distribution of columns like Hours_Studied, Attendance, Sleep_Hours, etc.
+Findings: Some columns were slightly skewed (e.g., Hours_Studied might have a tail above 30). Others were fairly normal.
+Boxplots for numeric columns
+
+
+This helped us spot outliers. For example, Exam_Score might range from 50 to 100, with few outliers beyond typical bounds.
+Countplots for categorical columns
+
+
+We checked frequency distribution of categories like Teacher_Quality (Low, Medium, High).
+Observation: “Medium” was often the most common category in columns like Parental_Involvement.
+4.2 Bivariate Analysis
+Pairplot among numeric columns
+
+
+We used sns.pairplot to see pairwise scatterplots. This can highlight linear relationships.
+Observation: Hours_Studied might show a moderate positive correlation with Exam_Score.
+Scatterplots vs. Exam_Score
+
+
+We individually plotted each numeric column (like Attendance) vs. Exam_Score.
+Insight: A mild correlation might appear for Previous_Scores vs. Exam_Score.
+Boxplots / Violin Plots for categorical columns vs. Exam_Score
+
+
+For example, we examined Teacher_Quality (Low/Medium/High) vs. Exam_Score.
+Finding: Students in “High” teacher-quality classes had a higher median exam score than those in “Low” or “Medium.”
+4.3 Multivariate: Correlation Heatmap
+We created a correlation heatmap for numeric features using sns.heatmap(df.corr(), annot=True). Some highlights:
+
+
+Exam_Score might show a positive correlation with Previous_Scores and Hours_Studied.
+Attendance could be modestly correlated with Exam_Score.
+Some features might be nearly uncorrelated (e.g., Distance_from_Home or Peer_Influence if they were numeric-coded) with Exam_Score.
+5. Preliminary Findings & Insights
+Strongest Predictors:
+
+
+Previous_Scores seems to have the highest correlation with Exam_Score.
+Hours_Studied also shows moderate correlation.
+Categorical Influences:
+
+
+Students with High Teacher_Quality or High Parental_Involvement often exhibit slightly higher Exam_Score.
+Data Quality:
+
+
+The dataset had a significant portion of missing values in certain columns, but the median/mode filling approach helps preserve row count.
+Some columns like Extracurricular_Activities or Internet_Access might be heavily skewed (most entries “Yes”), which can lead to less variance.
+Potential Next Steps:
+
+
+Feature Engineering: Possibly combine Parental_Involvement and Teacher_Quality into a single “Support Score.”
+Modeling: We can try regression (if Exam_Score is continuous) or classification (if we convert Exam_Score to pass/fail)
