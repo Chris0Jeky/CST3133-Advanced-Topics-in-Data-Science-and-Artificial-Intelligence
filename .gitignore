@@ -1,2 +1,8 @@
 /.idea
+/.anaconda_projects
+/.jpynb_checkpoints
+/.virtual_documents
+/Part Two - Deep Learning/.ipynb_checkpoints
+Part Two - Deep Learning/content/glove.6B.100d.txt
 .DS_Store
+
