@@ -4,3 +4,4 @@ scikit-learn~=1.5.1
 matplotlib~=3.9.2
 seaborn~=0.13.2
 protobuf~=4.25.3
+tensorflow~=2.8.0
