@@ -3,6 +3,10 @@
 /.jpynb_checkpoints
 /.virtual_documents
 /Part Two - Deep Learning/.ipynb_checkpoints
+<<<<<<< HEAD
 Part Two - Deep Learning/content/glove.6B.100d.txt
 .DS_Store
 
+=======
+Part Two - Deep Learning/content/glove.6B/glove.6B.100d.txt
+>>>>>>> origin/main
