@@ -1,9 +1,89 @@
-/.idea
-/anaconda_projects
-/.jpynb_checkpoints
-/.virtual_documents
-/Part Two - Deep Learning/.ipynb_checkpoints
-Part Two - Deep Learning/content/glove.6B/glove.6B.100d.txt
-Submission Files/content/glove.6B/glove.6B.100d.txt
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints/
+.jpynb_checkpoints
+.virtual_documents
+
+# Data files
+*.csv
+*.xlsx
+*.xls
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Model files
+*.h5
+*.pkl
+*.pth
+*.pt
+*.model
+results/models/*
+!results/models/.gitkeep
+
+# GloVe embeddings
+glove*.txt
+glove*.zip
+*/glove.6B/*
+
+# IDE
+.vscode/
+.idea/
+anaconda_projects/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Documentation build
+docs/_build/
+docs/_static/
+docs/_templates/
+
+# Claude settings
 CLAUDE.md
 .claude/settings.local.json
