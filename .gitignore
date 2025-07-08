@@ -87,3 +87,4 @@ docs/_templates/
 # Claude settings
 CLAUDE.md
 .claude/settings.local.json
+PORTFOLIO_WEBPAGE_CONTENT.txt
