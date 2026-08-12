@@ -5,7 +5,7 @@
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.0+-orange.svg)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-latest-green.svg)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
 ![Status](https://img.shields.io/badge/Status-Complete-success.svg)
 
 <h3>Advanced Machine Learning & Deep Learning Solutions for Education and Media Analysis</h3>
@@ -228,7 +228,7 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under GPL-3.0-only; see [LICENSE](LICENSE) and [RELICENSING.md](RELICENSING.md).
 
 ## 🙏 Acknowledgments
 
