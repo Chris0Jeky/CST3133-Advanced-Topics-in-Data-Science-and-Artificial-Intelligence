@@ -8,9 +8,9 @@
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
 ![Status](https://img.shields.io/badge/Status-Complete-success.svg)
 
-<h3>Advanced Machine Learning & Deep Learning Solutions for Education and Media Analysis</h3>
+<h3>Coursework exploration of machine learning and deep learning for education and media analysis</h3>
 
-[🚀 Live Demo](#demo) | [📊 Results](#results) | [📖 Documentation](#documentation) | [🔧 Installation](#installation)
+[🚀 Local demo](#quick-start) | [📊 Recorded results](#results) | [📖 Coursework material](#coursework-material) | [🔧 Installation](#installation)
 
 </div>
 
@@ -23,19 +23,17 @@
 <td width="50%">
 
 ### 📚 Student Performance Prediction
-- **98% R² Score** with Random Forest
+- **Recorded 0.98 R² score** with Random Forest
 - Handles corrupted & missing data
-- Multi-output prediction (scores & grades)
-- Comprehensive feature importance analysis
+- Coursework feature-importance analysis
 
 </td>
 <td width="50%">
 
 ### 📰 Fake News Detection
-- **99.99% Accuracy** with LSTM
+- **Recorded 99.99% accuracy** with LSTM
 - GloVe embeddings for semantic understanding
-- Real-time inference capability
-- Trained on 45K+ articles
+- Exploratory text-classification workflow
 
 </td>
 </tr>
@@ -43,11 +41,10 @@
 
 ## 🎯 Key Achievements
 
-- ✅ **Dual-Algorithm Approach**: Showcases both traditional ML and deep learning expertise
-- ✅ **Production-Ready Code**: Clean, modular, and well-documented implementation
-- ✅ **Robust Data Pipeline**: Handles real-world messy data with 15+ edge cases
-- ✅ **State-of-the-Art Performance**: Achieves near-perfect accuracy on both tasks
-- ✅ **Comprehensive Analysis**: Feature importance, correlation studies, and ablation testing
+- ✅ **Dual-Algorithm Approach**: Coursework spanning traditional ML and deep learning
+- ✅ **Interactive walkthrough**: A Streamlit interface for exploring the project narrative
+- ✅ **Data preparation**: Notebooks and course material covering cleaning and exploratory analysis
+- ✅ **Recorded results**: Metrics and visualisations preserved from the coursework and demo
 
 ## 🏗️ Architecture Overview
 
@@ -68,6 +65,9 @@ graph LR
 </div>
 
 ## 📊 Results
+
+The figures below are recorded coursework/demo results. They are not presented as a current,
+independently reproducible benchmark or as evidence of a production model.
 
 ### Student Performance Prediction
 
@@ -107,8 +107,8 @@ graph LR
 
 ```bash
 # Clone the repository
-git clone https://github.com/Chris0Jeky/CST3133-Advanced-AI-Topics.git
-cd CST3133-Advanced-AI-Topics
+git clone https://github.com/Chris0Jeky/AI-Data-Analytics-Suite-Python.git
+cd AI-Data-Analytics-Suite-Python
 
 # Create virtual environment
 python -m venv venv
@@ -117,17 +117,24 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 # Install dependencies
 pip install -r requirements.txt
 
-# Download GloVe embeddings (for Part 2)
+# Optional: download GloVe embeddings for experiments that need them
 wget http://nlp.stanford.edu/data/glove.6B.zip
 unzip glove.6B.zip -d data/
 ```
+
+`setup.sh` automates a similar setup for Bash-compatible shells. It is optional; on Windows,
+use the commands above from PowerShell rather than invoking the Bash script directly.
 
 ## 🚀 Quick Start
 
 ### Option 1: Run Interactive Demo
 ```bash
-python demo.py
+python -m streamlit run demo.py
 ```
+
+Streamlit opens the local demo in a browser. The interface uses embedded example data and
+simulated heuristic outputs to illustrate the coursework; it does not load a shipped trained model
+or perform a validated real-world fake-news assessment.
 
 ### Option 2: Jupyter Notebooks
 ```bash
@@ -138,46 +145,32 @@ jupyter notebook notebooks/student_performance_analysis.ipynb
 jupyter notebook notebooks/fake_news_detection.ipynb
 ```
 
-### Option 3: Python Scripts
-```python
-# Student Performance Prediction
-from src.models import StudentPerformancePredictor
-
-predictor = StudentPerformancePredictor()
-predictor.load_data("data/student_performance.csv")
-predictor.train()
-score = predictor.predict(student_features)
-
-# Fake News Detection
-from src.models import FakeNewsDetector
-
-detector = FakeNewsDetector()
-detector.load_model("results/models/lstm_fake_news.h5")
-is_fake = detector.predict("Breaking news article text...")
-```
-
 ## 📁 Project Structure
 
 ```
-├── 📁 data/
-│   ├── raw/                 # Original datasets
-│   └── processed/           # Preprocessed data
+├── 📁 Part one - Machine Learning/  # Source coursework notebooks and student-performance data
+├── 📁 Part Two - Deep Learning/    # Source coursework notebooks and fake/true article data
 ├── 📁 notebooks/
-│   ├── student_performance_analysis.ipynb
-│   └── fake_news_detection.ipynb
-├── 📁 src/
-│   ├── models/             # ML/DL models
-│   ├── preprocessing/      # Data cleaning utilities
-│   ├── visualization/      # Plotting functions
-│   └── utils/             # Helper functions
+│   ├── student_performance_analysis.ipynb  # Convenience copy
+│   └── fake_news_detection.ipynb            # Convenience copy
+├── 📁 data/                # Empty raw/processed placeholders for local experiments
 ├── 📁 results/
-│   ├── figures/           # Generated visualizations
-│   └── models/            # Saved model files
-├── 📄 requirements.txt
-├── 📄 demo.py            # Interactive demo
+│   ├── figures/             # Placeholder for generated figures
+│   └── models/              # Placeholder for local model output
+├── 📄 demo.py              # Streamlit interactive walkthrough
+├── 📄 requirements.txt      # Pinned Python dependencies
+├── 📄 RELICENSING.md        # Licence/provenance decision record
 └── 📄 README.md
-
 ```
+
+There is no `src/` Python package or importable model API in this repository. Use the notebooks
+and the Streamlit demo as the supported entry points.
+
+## 📖 Coursework Material
+
+The submitted report, original notebooks, datasets, and `Submission Files/` directory are
+preserved as coursework evidence. Their names and content are intentionally not normalised by this
+repository-maintenance pass.
 
 ## 🛠️ Technologies Used
 
