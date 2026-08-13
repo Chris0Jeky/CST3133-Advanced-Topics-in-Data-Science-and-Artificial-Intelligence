@@ -112,18 +112,33 @@ cd AI-Data-Analytics-Suite-Python
 
 # Create virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
+Activate it on macOS or Linux with Bash:
+
+```bash
+source venv/bin/activate
+```
+
+Or activate it on Windows with PowerShell:
+
+```powershell
+.\venv\Scripts\Activate.ps1
+```
+
+Then install the dependencies:
+
+```bash
 # Install dependencies
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 
 # Optional: download GloVe embeddings for experiments that need them
 wget http://nlp.stanford.edu/data/glove.6B.zip
 unzip glove.6B.zip -d data/
 ```
 
-`setup.sh` automates a similar setup for Bash-compatible shells. It is optional; on Windows,
-use the commands above from PowerShell rather than invoking the Bash script directly.
+`setup.sh` automates a similar setup for Bash-compatible shells. It is optional; on Windows, use
+the PowerShell activation and dependency-install commands above rather than invoking the script.
 
 ## 🚀 Quick Start
 
@@ -137,13 +152,24 @@ simulated heuristic outputs to illustrate the coursework; it does not load a shi
 or perform a validated real-world fake-news assessment.
 
 ### Option 2: Jupyter Notebooks
-```bash
-# Part 1: Student Performance Prediction
-jupyter notebook notebooks/student_performance_analysis.ipynb
 
-# Part 2: Fake News Detection
-jupyter notebook notebooks/fake_news_detection.ipynb
+For Part 1, start from the repository root:
+
+```bash
+cd "Part one - Machine Learning"
+jupyter notebook "CST3133_Part_One_Pre_Process_EDA_Machine_Learning.ipynb"
 ```
+
+For Part 2, start separately from the repository root:
+
+```bash
+cd "Part Two - Deep Learning"
+jupyter notebook "CST3133_Part_Two_NLP_And_Deep_Learning.ipynb"
+```
+
+These source notebooks run beside the `content/` directories they reference. The copies under
+`notebooks/` are preserved coursework material, but their relative dataset paths do not resolve
+from that directory and they are not supported launch targets.
 
 ## 📁 Project Structure
 
@@ -151,8 +177,8 @@ jupyter notebook notebooks/fake_news_detection.ipynb
 ├── 📁 Part one - Machine Learning/  # Source coursework notebooks and student-performance data
 ├── 📁 Part Two - Deep Learning/    # Source coursework notebooks and fake/true article data
 ├── 📁 notebooks/
-│   ├── student_performance_analysis.ipynb  # Convenience copy
-│   └── fake_news_detection.ipynb            # Convenience copy
+│   ├── student_performance_analysis.ipynb  # Preserved copy; see note above
+│   └── fake_news_detection.ipynb            # Preserved copy; see note above
 ├── 📁 data/                # Empty raw/processed placeholders for local experiments
 ├── 📁 results/
 │   ├── figures/             # Placeholder for generated figures
@@ -163,8 +189,8 @@ jupyter notebook notebooks/fake_news_detection.ipynb
 └── 📄 README.md
 ```
 
-There is no `src/` Python package or importable model API in this repository. Use the notebooks
-and the Streamlit demo as the supported entry points.
+There is no `src/` Python package or importable model API in this repository. Use the source
+coursework notebooks shown above and the Streamlit demo as the supported entry points.
 
 ## 📖 Coursework Material
 
