@@ -151,25 +151,11 @@ Streamlit opens the local demo in a browser. The interface uses embedded example
 simulated heuristic outputs to illustrate the coursework; it does not load a shipped trained model
 or perform a validated real-world fake-news assessment.
 
-### Option 2: Jupyter Notebooks
+### Coursework Notebooks
 
-For Part 1, start from the repository root:
-
-```bash
-cd "Part one - Machine Learning"
-jupyter notebook "CST3133_Part_One_Pre_Process_EDA_Machine_Learning.ipynb"
-```
-
-For Part 2, start separately from the repository root:
-
-```bash
-cd "Part Two - Deep Learning"
-jupyter notebook "CST3133_Part_Two_NLP_And_Deep_Learning.ipynb"
-```
-
-These source notebooks run beside the `content/` directories they reference. The copies under
-`notebooks/` are preserved coursework material, but their relative dataset paths do not resolve
-from that directory and they are not supported launch targets.
+The source notebooks and the copies under `notebooks/` are preserved coursework artifacts for
+inspection. They contain historical relative-path assumptions across the two coursework parts and
+are not documented as runnable entry points until those paths are reconciled.
 
 ## 📁 Project Structure
 
@@ -189,8 +175,8 @@ from that directory and they are not supported launch targets.
 └── 📄 README.md
 ```
 
-There is no `src/` Python package or importable model API in this repository. Use the source
-coursework notebooks shown above and the Streamlit demo as the supported entry points.
+There is no `src/` Python package or importable model API in this repository. The Streamlit demo is
+the only documented runnable entry point.
 
 ## 📖 Coursework Material
 
